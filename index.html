@@ -287,6 +287,15 @@
           if (d && d.type === "sd:frame") {
             f.style.width = d.w;
             f.style.height = d.h;
+            if (d.fullscreen) {
+              f.style.inset = "0";
+              f.style.bottom = "";
+              f.style.right = "";
+            } else {
+              f.style.inset = "";
+              f.style.bottom = "0";
+              f.style.right = "0";
+            }
           }
         });
         document.body.appendChild(f);
