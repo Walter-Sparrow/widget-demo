@@ -1,266 +1,277 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Service Desk — Widget Demo</title>
-  <style>
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-
-    :root {
-      --bg: #f8fafc;
-      --surface: #ffffff;
-      --text: #0f172a;
-      --text-muted: #64748b;
-      --accent: #2563eb;
-      --accent-light: #dbeafe;
-      --border: #e2e8f0;
-      --radius: 12px;
-    }
-
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      min-height: 100vh;
-    }
-
-    header {
-      background: var(--surface);
-      border-bottom: 1px solid var(--border);
-      padding: 16px 24px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    header svg { color: var(--accent); flex-shrink: 0; }
-
-    header h1 {
-      font-size: 18px;
-      font-weight: 600;
-    }
-
-    header span {
-      font-size: 12px;
-      background: var(--accent-light);
-      color: var(--accent);
-      padding: 2px 8px;
-      border-radius: 999px;
-      font-weight: 500;
-    }
-
-    .hero {
-      max-width: 720px;
-      margin: 80px auto 0;
-      padding: 0 24px;
-      text-align: center;
-    }
-
-    .hero h2 {
-      font-size: 40px;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      line-height: 1.2;
-      margin-bottom: 16px;
-    }
-
-    .hero h2 em {
-      font-style: normal;
-      color: var(--accent);
-    }
-
-    .hero p {
-      font-size: 18px;
-      color: var(--text-muted);
-      max-width: 520px;
-      margin: 0 auto 40px;
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 16px;
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 0 24px 120px;
-    }
-
-    .card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 24px;
-      text-align: left;
-    }
-
-    .card .icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
-      background: var(--accent-light);
-      color: var(--accent);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 12px;
-    }
-
-    .card h3 { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
-    .card p  { font-size: 13px; color: var(--text-muted); }
-
-    .arrow {
-      position: fixed;
-      bottom: 28px;
-      right: 96px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--text-muted);
-      font-size: 14px;
-      font-weight: 500;
-      animation: bounce 2s ease-in-out infinite;
-      pointer-events: none;
-    }
-
-    @keyframes bounce {
-      0%,100% { transform: translateX(0); }
-      50% { transform: translateX(6px); }
-    }
-
-    @media (max-width: 480px) {
-      .hero h2 { font-size: 28px; }
-      .hero p { font-size: 16px; }
-      .arrow { display: none; }
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-    <h1>Service Desk</h1>
-    <span>demo</span>
-  </header>
-
-  <section class="hero">
-    <h2>Виджет <em>чата</em> для вашего сайта</h2>
-    <p>Встроенный чат поддержки, который легко подключить на любую страницу одной строкой кода.</p>
-  </section>
-
-  <div class="cards">
-    <div class="card">
-      <div class="icon">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-      </div>
-      <h3>Простая интеграция</h3>
-      <p>Один скрипт-тег — и виджет уже на странице</p>
-    </div>
-    <div class="card">
-      <div class="icon">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-      </div>
-      <h3>Безопасность</h3>
-      <p>Изолированный iframe, кросс-доменная защита</p>
-    </div>
-    <div class="card">
-      <div class="icon">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-      </div>
-      <h3>Адаптивный</h3>
-      <p>Корректно работает на десктопе и мобильных</p>
-    </div>
-  </div>
-
-  <div class="arrow">
-    Попробуйте виджет
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-  </div>
-
-  <!-- Widget embed script — replace WIDGET_URL and CHANNEL_TOKEN -->
-  <script>
-  (function () {
-    var WIDGET_URL = "https://desk.kretts.com.ru/widget.html";
-    var CHANNEL_TOKEN = "demo";
-
-    var params = new URLSearchParams(window.location.search);
-    if (params.get("widget_url")) WIDGET_URL = params.get("widget_url");
-    if (params.get("token")) CHANNEL_TOKEN = params.get("token");
-
-    var CHAT_ICON = '<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>';
-    var CLOSE_ICON = '<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>';
-
-    var isOpen = false;
-
-    var container = document.createElement("div");
-    container.style.cssText = "position:fixed;bottom:20px;right:20px;z-index:999999;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;";
-
-    var panel = document.createElement("div");
-    panel.style.cssText = "position:absolute;bottom:70px;right:0;width:400px;height:600px;max-width:calc(100vw - 40px);max-height:calc(100vh - 110px);box-shadow:0 4px 24px rgba(0,0,0,0.15);border-radius:12px;overflow:hidden;transform:translateY(20px);opacity:0;pointer-events:none;transition:transform .3s ease,opacity .3s ease;";
-
-    var iframe = document.createElement("iframe");
-    iframe.src = WIDGET_URL + "#token=" + encodeURIComponent(CHANNEL_TOKEN);
-    iframe.title = "Service Desk Chat";
-    iframe.style.cssText = "width:100%;height:100%;border:none;display:block;";
-
-    var btn = document.createElement("button");
-    btn.type = "button";
-    btn.setAttribute("aria-label", "Open chat");
-    btn.innerHTML = CHAT_ICON;
-    btn.style.cssText = "width:60px;height:60px;border-radius:50%;background:#2563eb;color:#fff;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(0,0,0,0.15);transition:transform .2s ease,box-shadow .2s ease;";
-
-    btn.onmouseenter = function () { btn.style.transform = "scale(1.05)"; btn.style.boxShadow = "0 6px 16px rgba(0,0,0,0.2)"; };
-    btn.onmouseleave = function () { btn.style.transform = "scale(1)"; btn.style.boxShadow = "0 4px 12px rgba(0,0,0,0.15)"; };
-
-    function open() {
-      isOpen = true;
-      panel.style.transform = "translateY(0)";
-      panel.style.opacity = "1";
-      panel.style.pointerEvents = "auto";
-      btn.innerHTML = CLOSE_ICON;
-      iframe.contentWindow && iframe.contentWindow.postMessage({ type: "sd:open" }, "*");
-    }
-    function close() {
-      isOpen = false;
-      panel.style.transform = "translateY(20px)";
-      panel.style.opacity = "0";
-      panel.style.pointerEvents = "none";
-      btn.innerHTML = CHAT_ICON;
-      iframe.contentWindow && iframe.contentWindow.postMessage({ type: "sd:close" }, "*");
-    }
-
-    btn.addEventListener("click", function () { isOpen ? close() : open(); });
-
-    iframe.addEventListener("load", function () {
-      iframe.contentWindow && iframe.contentWindow.postMessage({ type: "sd:init", channelToken: CHANNEL_TOKEN }, "*");
-    });
-
-    window.addEventListener("message", function (e) {
-      var d = e.data;
-      if (!d || !d.type || d.type.indexOf("sd:") !== 0) return;
-      if (d.type === "sd:resize" && typeof d.height === "number" && d.height > 0) {
-        panel.style.height = Math.min(d.height, window.innerHeight) + "px";
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Service Desk — Widget Demo</title>
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
       }
-      if (d.type === "sd:close") close();
-    });
 
-    window.addEventListener("resize", function () {
-      if (window.innerWidth < 480) {
-        panel.style.width = "100%";
-        panel.style.height = "100%";
-        panel.style.borderRadius = "0";
-      } else {
-        panel.style.width = "400px";
-        panel.style.height = "600px";
-        panel.style.borderRadius = "12px";
+      :root {
+        --bg: #f8fafc;
+        --surface: #ffffff;
+        --text: #0f172a;
+        --text-muted: #64748b;
+        --accent: #2563eb;
+        --accent-light: #dbeafe;
+        --border: #e2e8f0;
+        --radius: 12px;
       }
-    });
 
-    panel.appendChild(iframe);
-    container.appendChild(panel);
-    container.appendChild(btn);
-    document.body.appendChild(container);
-  })();
-  </script>
-</body>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+        min-height: 100vh;
+      }
+
+      header {
+        background: var(--surface);
+        border-bottom: 1px solid var(--border);
+        padding: 16px 24px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      header svg {
+        color: var(--accent);
+        flex-shrink: 0;
+      }
+
+      header h1 {
+        font-size: 18px;
+        font-weight: 600;
+      }
+
+      header span {
+        font-size: 12px;
+        background: var(--accent-light);
+        color: var(--accent);
+        padding: 2px 8px;
+        border-radius: 999px;
+        font-weight: 500;
+      }
+
+      .hero {
+        max-width: 720px;
+        margin: 80px auto 0;
+        padding: 0 24px;
+        text-align: center;
+      }
+
+      .hero h2 {
+        font-size: 40px;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        line-height: 1.2;
+        margin-bottom: 16px;
+      }
+
+      .hero h2 em {
+        font-style: normal;
+        color: var(--accent);
+      }
+
+      .hero p {
+        font-size: 18px;
+        color: var(--text-muted);
+        max-width: 520px;
+        margin: 0 auto 40px;
+      }
+
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 16px;
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 0 24px 120px;
+      }
+
+      .card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 24px;
+        text-align: left;
+      }
+
+      .card .icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        background: var(--accent-light);
+        color: var(--accent);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 12px;
+      }
+
+      .card h3 {
+        font-size: 15px;
+        font-weight: 600;
+        margin-bottom: 4px;
+      }
+      .card p {
+        font-size: 13px;
+        color: var(--text-muted);
+      }
+
+      .arrow {
+        position: fixed;
+        bottom: 28px;
+        right: 96px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--text-muted);
+        font-size: 14px;
+        font-weight: 500;
+        animation: bounce 2s ease-in-out infinite;
+        pointer-events: none;
+      }
+
+      @keyframes bounce {
+        0%,
+        100% {
+          transform: translateX(0);
+        }
+        50% {
+          transform: translateX(6px);
+        }
+      }
+
+      @media (max-width: 480px) {
+        .hero h2 {
+          font-size: 28px;
+        }
+        .hero p {
+          font-size: 16px;
+        }
+        .arrow {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path
+          d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+        />
+      </svg>
+      <h1>Service Desk</h1>
+      <span>demo</span>
+    </header>
+
+    <section class="hero">
+      <h2>Виджет <em>чата</em> для вашего сайта</h2>
+      <p>
+        Встроенный чат поддержки, который легко подключить на любую страницу
+        одной строкой кода.
+      </p>
+    </section>
+
+    <div class="cards">
+      <div class="card">
+        <div class="icon">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <polyline points="16 18 22 12 16 6" />
+            <polyline points="8 6 2 12 8 18" />
+          </svg>
+        </div>
+        <h3>Простая интеграция</h3>
+        <p>Один скрипт-тег — и виджет уже на странице</p>
+      </div>
+      <div class="card">
+        <div class="icon">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+          </svg>
+        </div>
+        <h3>Безопасность</h3>
+        <p>Изолированный iframe, кросс-доменная защита</p>
+      </div>
+      <div class="card">
+        <div class="icon">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+            <line x1="8" y1="21" x2="16" y2="21" />
+            <line x1="12" y1="17" x2="12" y2="21" />
+          </svg>
+        </div>
+        <h3>Адаптивный</h3>
+        <p>Корректно работает на десктопе и мобильных</p>
+      </div>
+    </div>
+
+    <div class="arrow">
+      Попробуйте виджет
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <line x1="5" y1="12" x2="19" y2="12" />
+        <polyline points="12 5 19 12 12 19" />
+      </svg>
+    </div>
+  </body>
 </html>
