@@ -273,5 +273,24 @@
         <polyline points="12 5 19 12 12 19" />
       </svg>
     </div>
+
+    <script>
+      (function () {
+        var f = document.createElement("iframe");
+        f.src =
+          "https://service-desk-001-mvp-chat-widget.ktsdev.ru/widget.html#token=e01e814226904339b37c10b90d4c4085";
+        f.style.cssText =
+          "position:fixed;bottom:0;right:0;border:none;z-index:999999;width:104px;height:104px;background:transparent;color-scheme:normal;";
+        f.setAttribute("allowtransparency", "true");
+        window.addEventListener("message", function (e) {
+          var d = e.data;
+          if (d && d.type === "sd:frame") {
+            f.style.width = d.w;
+            f.style.height = d.h;
+          }
+        });
+        document.body.appendChild(f);
+      })();
+    </script>
   </body>
 </html>
